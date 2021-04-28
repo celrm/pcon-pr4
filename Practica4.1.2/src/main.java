@@ -6,7 +6,7 @@ public class main {
 		Productor[] prod = new Productor[M];
 		Consumidor[] cons = new Consumidor[K];
 		
-		Almacen al = new AlmacenSem(N); 
+		Almacen al = new AlmacenSynchronized(N); 
 		for (int i = 0; i < M; ++i){
 			prod[i] = new Productor(al);
 			prod[i].start();

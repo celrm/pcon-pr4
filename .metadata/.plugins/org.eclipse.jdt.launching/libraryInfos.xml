@@ -46,5 +46,6 @@
             <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/endorsed"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="/Users/mariaarranzlobo/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.x86_64_15.0.2.v20210201-0955/jre" version="15.0.2"/>
     <libraryInfo home="/usr/lib/jvm/java-11-openjdk-amd64" version="11.0.11"/>
 </libraryInfos>
