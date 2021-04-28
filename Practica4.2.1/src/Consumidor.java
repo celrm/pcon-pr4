@@ -7,13 +7,15 @@ public class Consumidor extends Thread {
     }
 
     public void run() {
+    	int num = 1;
     	while (true){
     		try {
-				al.extraer();
+				al.extraer(num);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+    		num = (num % 4) + 1;
     	}
     }
 }

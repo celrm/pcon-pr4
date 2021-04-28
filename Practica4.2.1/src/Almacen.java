@@ -1,5 +1,4 @@
-
-
+import java.util.List;
 
 public interface Almacen {
 	
@@ -8,7 +7,7 @@ public interface Almacen {
 * hueco el proceso que ejecute el me ́todo bloquear ́a hasta que lo haya.
  * @throws Exception 
 */
-public void almacenar(Producto producto) throws Exception;
+public void almacenar(List<Producto> productos,int num) throws Exception;
 
 
 
@@ -18,6 +17,6 @@ public void almacenar(Producto producto) throws Exception;
 * proceso que ejecute el método bloqueará hasta que se almacene un dato.
  * @throws Exception 
 */
-public Producto extraer() throws Exception;
+public List<Producto> extraer(int num) throws Exception;
 
 }

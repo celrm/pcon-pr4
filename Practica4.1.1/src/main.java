@@ -1,18 +1,14 @@
-import java.util.concurrent.Semaphore;
-
 public class main {
-	static WrapInt n;
+	static Monitor n;
 	public static void main(String[] args) {
-		int M = 20;
-		int N = 100;
-		n = new WrapInt();
-		n.value = 0;
-		Semaphore l = new Semaphore(1);
+		int M = 200;
+		int N = 1000;
+		n = new Monitor();
 		Decrementar[] dt = new Decrementar[M];
 		Incrementar[] it = new Incrementar[M];
 		for (int i = 0; i < M; ++i){
-			it[i] = new Incrementar(n,N,2*(i+1),l);
-			dt[i] = new Decrementar(n,N,2*(i+1)-1,l);
+			it[i] = new Incrementar(n,N,2*(i+1));
+			dt[i] = new Decrementar(n,N,2*(i+1)-1);
 			it[i].start();
 			dt[i].start();
 		}
@@ -20,11 +16,8 @@ public class main {
 			try {
 				dt[i].join();
 				it[i].join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} catch (InterruptedException e) {}
 		}
-		System.out.println(n.value);
+		System.out.println(n.value());
 	}
 }

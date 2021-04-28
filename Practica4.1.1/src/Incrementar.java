@@ -1,33 +1,19 @@
-import java.util.concurrent.Semaphore;
-
 public class Incrementar extends Thread {
-    WrapInt n;
+    Monitor n;
     int N;
     int id;
-    Semaphore l;
-    Incrementar(WrapInt n,int N,int id,Semaphore l2) {
+    Incrementar(Monitor n,int N,int id) {
     	this.n = n;
         this.N = N;
         this.id = id;
-        this.l = l2;
     }
 
     public void run() {
         for (int i = 0; i < N; ++i){
-        	try 
-            {
-                l.acquire();
-            	
-            	++n.value;
-              
-                
-            } catch (InterruptedException exc) {
-                    System.out.println(exc);
-                }
-            	l.release();
-
+            n.suma();
         }
     }
 
 
 }
+
