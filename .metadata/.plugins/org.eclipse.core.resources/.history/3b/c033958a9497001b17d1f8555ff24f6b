@@ -1,0 +1,29 @@
+import java.util.concurrent.Semaphore;
+
+public class main {
+	public static void main(String[] args) {
+		int M = 20;
+		int K = 100;
+
+		Productor[] prod = new Productor[M];
+		Consumidor[] cons = new Consumidor[K];
+		
+		Almacen al = new AlmacenSem(); 
+		for (int i = 0; i < M; ++i){
+			prod[i] = new Productor();
+		}
+		for (int j = 0; j < K; ++j){
+			
+		}
+		for (int i = 0; i < M; ++i){
+			try {
+				dt[i].join();
+				it[i].join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println(n.value);
+	}
+}

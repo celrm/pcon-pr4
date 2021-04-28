@@ -1,0 +1,56 @@
+
+import java.util.concurrent.Semaphore;
+
+public class AlmacenSem implements Almacen{
+	Producto [] buff;
+	Semaphore empty;
+	Semaphore full;
+	Semaphore mutexP;
+	Semaphore mutexC;
+	int ini;
+	int fin;
+	int N;
+	AlmacenSem(int N){
+		this.buff = new Producto[N];
+		this.empty = new Semaphore(1);
+		this.full = new Semaphore(0);
+		this.mutexP = new Semaphore(1);
+		this.mutexC = new Semaphore(1);
+		this.ini = 0;
+		this.fin = 0;
+		this.N = N;
+	}
+	public void almacenar(Producto producto) {
+		try {
+			empty.acquire();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mutexP.acquire();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		this.buff[fin] = producto;
+		
+		this.fin = (this.fin+1) % this.N;
+		
+		mutexP.release();
+		full.release();
+		
+	}
+
+	public Producto extraer() {
+		try {
+			full.acquire();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Producto p = buff;
+		empty.release();
+		return p;
+	}
+
+}
